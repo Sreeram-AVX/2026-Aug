@@ -27,10 +27,10 @@ module "vpc" {
   public_subnet_cidr  = "10.0.1.0/24"
   private_subnet_cidr = "10.0.2.0/24"
   availability_zone   = "us-east-1a"
-  ami_id              = "ami-0c02fb55956c7d316"   # Amazon Linux 2 (us-east-1)
+  ami_id              = "ami-0c02fb55956c7d316" # Amazon Linux 2 (us-east-1)
   instance_type       = "t3.micro"
   //key_name            = "my-ssh-key"               # replace with your key pair
-  allowed_ssh_cidrs   = ["0.0.0.0/0"]             # replace with your IP
+  allowed_ssh_cidrs = ["0.0.0.0/0"] # replace with your IP
 }
 
 output "public_vm_ip" {
