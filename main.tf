@@ -2,24 +2,8 @@
 # Root configuration — calls the vpc-with-vms module
 # =============================================================================
 
-terraform {
-  required_version = ">= 1.5.0"
-
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "~> 5.0"
-    }
-  }
-}
-
-provider "aws" {
-  region = "us-east-1"
-}
-
 module "vpc" {
   source = "./modules/vpc-with-vms"
-  //source = "My-First-Repo-For-pipeline/terraform-vpc-module/modules"
 
   project_name        = "my-demo"
   environment         = "dev"
@@ -27,10 +11,10 @@ module "vpc" {
   public_subnet_cidr  = "10.0.1.0/24"
   private_subnet_cidr = "10.0.2.0/24"
   availability_zone   = "us-east-1a"
-  ami_id              = "ami-0c02fb55956c7d316" # Amazon Linux 2 (us-east-1)
+  ami_id              = "ami-0c02fb55956c7d316"   # Amazon Linux 2 (us-east-1)
   instance_type       = "t3.micro"
-  //key_name            = "my-ssh-key"               # replace with your key pair
-  allowed_ssh_cidrs = ["0.0.0.0/0"] # replace with your IP
+  key_name            = "my-ssh-key"               # replace with your key pair
+  allowed_ssh_cidrs   = ["0.0.0.0/0"]             # replace with your IP
 }
 
 output "public_vm_ip" {
