@@ -16,7 +16,7 @@
 
 terraform {
   backend "s3" {
-    bucket  = "my-backup-sreeram " # replace with your bucket name
+    bucket  = "sreeram-github-bucket" # replace with your bucket name
     key     = "vpc-module/terraform.tfstate"
     region  = "us-east-1"
     encrypt = true
